@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="container py-5">
+
+    <section class="card card-body">
+        <h1 class="display-1 text-center">Welcome to Your Task Manager App!</h1>
+        <h2 class="display-5 text-center mt-4 text-secondary">A Django App</h2> <br>
+        <p>Take control of your daily goals. This platform helps you organize tasks,
+        prioritize what matters most, and track your progress in real-time, 
+        ensuring you never miss a deadline again.</p>
+        <p>Create, organize, and complete your tasks with an intuitive interface 
+            designed to keep your focus where it belongs: <strong>getting things done.</strong> </p>
+        {% if not user.is_authenticated %}
+        <div class="text-center">
+            <a class="btn btn-secondary" href="signup/">
+                Sign-up
+            </a>        
+            <a class="btn btn-dark" href="login/">
+                Log-In
+            </a>
+        </div>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}
