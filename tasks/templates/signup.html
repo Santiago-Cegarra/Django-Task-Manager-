@@ -3,33 +3,35 @@
 <main class="container">
     <div class="row">
         <div class="col-md-4 offset-md-4 mt-5 py-5">
-            <form action="/signup/" method="POST" class="card card-body">
-                <h1 class="text-center">Sign-up</h1>
+            <form action="/signup/" method="POST" class="card card-body shadow-sm">
+                <h1 class="text-center mb-4">Sign-up</h1>
                 {% csrf_token %}
                 
-                <div class="mb3 mt-2">
-                    <label for="username">Username:</label>
-                    <input type="text" name="username"
-                    id="username" class="form-control" placeholder="Write Your Username">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Write Your Username">
                 </div>
-                <div class="mb3 mt-2">
-                    <label for="password1">Password</label>
-                    <input type="password" name="password1"
-                    id="password1" class="form-control" placeholder="Write Your password">
+                
+                <div class="mb-3">
+                    <label for="password1" class="form-label">Password:</label>
+                    <input type="password" name="password1" id="password1" class="form-control" placeholder="Write Your password">
                 </div>
-                <div class="mb3 mt-2">
-                    <label for="password2">Confirm your Password</label>
-                    <input type="password" name="password2"
-                    id="password2" class="form-control" placeholder="Confirm your password">
+                
+                <div class="mb-3">
+                    <label for="password2" class="form-label">Confirm your Password:</label>
+                    <input type="password" name="password2" id="password2" class="form-control" placeholder="Confirm your password">
                 </div>
 
-                <button class="btn btn-dark mt-5">
+                <button type="submit" class="btn btn-dark w-100 mt-4">
                     SignUp
                 </button>
-                <h3>
-                    <strong><br>{{error}}</strong>
-                </h3>
-        </form>
+                
+                {% if error %}
+                <div class="text-danger text-center mt-3">
+                    <strong>{{error}}</strong>
+                </div>
+                {% endif %}
+            </form>
         </div>
     </div>
 </main>
