@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Fondo oscuro con bordes redondeados tipo App -->
+  <rect width="512" height="512" rx="115" fill="#212529"/>
+  <!-- Checkmark naranja (estilo importante) -->
+  <path d="M150 270 L220 340 L360 170" fill="none" stroke="#ffc107" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
