@@ -5,6 +5,19 @@
         <div class="col-md-6 offset-md-3">
             <h1 class="text-center display-3 py-5">Completed Tasks</h1>
             <ul class="list-group">
+            {%if not tasks %}
+                    <div class="text-center p-5 bg-light rounded shadow-sm border">
+                    <i class="bi bi-clipboard-x text-muted mb-4" style="font-size: 5rem;"></i>
+                    <h2 class="text-dark mb-3">Keep Working !</h2>
+                    <p class="lead text-secondary mb-4">
+                        You currently have no Completed tasks. It's the perfect time to start Working again!
+                    </p>
+                    <a href="{% url 'tasks' %}" class="btn btn-secondary btn-lg shadow">
+                        Check my Pending Tasks
+                    </a>
+                </div>
+                {% endif %}    
+                
                 {% for task in tasks %}
                 <a class="list-group-item" href="{% url 'task_detail' task.id %}">
                         <header class="d-flex flex-wrap flex-sm-row justify-content-between mb-2">
@@ -16,7 +29,7 @@
                         <p>Created by {{task.created_by}}</p>
                         </header>
                         <p>{{task.desc}}</p>
-                        <p>Completed at {{task.date_completed}}</p>
+                        <p>Completed at {{task.date_completed|date:"M d, Y"}}</p>
                 </a>
                 {% endfor %}
             </ul>

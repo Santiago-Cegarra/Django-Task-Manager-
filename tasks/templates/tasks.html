@@ -6,34 +6,43 @@
             <h1 class="text-center display-3 py-5">Pending Tasks</h1>
             <ul class="list-group">
                 {%if not tasks %}
-                    <div class="text-center p-5 bg-light rounded shadow-sm border">
+                <div class="text-center p-5 bg-light rounded shadow-sm border">
                     <i class="bi bi-clipboard-check text-muted mb-4" style="font-size: 5rem;"></i>
                     <h2 class="text-dark mb-3">Congrats! Everything is done.</h2>
                     <p class="lead text-secondary mb-4">
                         You currently have no pending tasks. It's the perfect time to start planning a new goal!
                     </p>
-                    <a href="{% url 'create_task' %}" class="btn btn-primary btn-lg shadow">
+                    <a href="{% url 'create_task' %}" class="btn btn-dark btn-lg shadow">
                         Create a new task
                     </a>
                 </div>
                 {% endif %}
-                
+
                 {% for task in tasks %}
                 <a class="list-group-item" href="{% url 'task_detail' task.id %}">
-                        <header class="d-flex flex-wrap flex-sm-row justify-content-between mb-2">
-                        {%if task.important%}
-                        <h1 class="fw-bold text-success"><strong>{{task.title}}</strong></h1>
-                        {%else%}
-                        <h1 class="fw-bold">{{task.title}}</h1>
-                        {% endif %}
+                    <header class="d-flex flex-wrap flex-sm-row justify-content-between mb-2">
+                        <div class="d-flex align-items-center">
+                            {% if task.important %}
+                            <i class="bi bi-star-fill text-warning me-2"></i>
+                            <h2 class="mb-0 fw-bold text-dark">{{ task.title }}</h2>
+                            {% else %}
+                            <h2 class="mb-0 fw-bold text-dark">{{ task.title }}</h2>
+                            {% endif %}
+                        </div>
                         <p>Created by {{task.created_by}}</p>
-                        </header>
-                        <p>{{task.desc}}</p>
-                        <p>Created at {{task.created_date}}</p>
+                    </header>
+                    <p>{{task.desc}}</p>
+                    <p>Created at {{task.created_date|date:"M d, Y"}}</p>
                 </a>
                 {% endfor %}
             </ul>
         </div>
-    </div>
+    </div>    
 </main>
-{% endblock %}    
+{%if tasks %}
+<div class="d-flex justify-content-center p-4">
+    <a href="{% url 'create_task' %}" class="justify-content-center btn btn-dark btn-lg shadow"> Create a new task</a>
+</div>
+{% endif %}
+
+{% endblock %}

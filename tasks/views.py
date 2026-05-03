@@ -18,7 +18,7 @@ def tasks(request):
     tasks = Task.objects.filter(created_by=request.user, date_completed=None)
     return render(request, 'tasks.html', {'tasks': tasks})
 
-
+@login_required
 def create_task(request):
     if request.method == "GET":
         return render(request, 'create_task.html', {
