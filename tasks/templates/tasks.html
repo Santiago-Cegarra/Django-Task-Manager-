@@ -3,8 +3,21 @@
 <main class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <h1 class="text-center display-3 py-5">Tasks Pending</h1>
+            <h1 class="text-center display-3 py-5">Pending Tasks</h1>
             <ul class="list-group">
+                {%if not tasks %}
+                    <div class="text-center p-5 bg-light rounded shadow-sm border">
+                    <i class="bi bi-clipboard-check text-muted mb-4" style="font-size: 5rem;"></i>
+                    <h2 class="text-dark mb-3">Congrats! Everything is done.</h2>
+                    <p class="lead text-secondary mb-4">
+                        You currently have no pending tasks. It's the perfect time to start planning a new goal!
+                    </p>
+                    <a href="{% url 'create_task' %}" class="btn btn-primary btn-lg shadow">
+                        Create a new task
+                    </a>
+                </div>
+                {% endif %}
+                
                 {% for task in tasks %}
                 <a class="list-group-item" href="{% url 'task_detail' task.id %}">
                         <header class="d-flex flex-wrap flex-sm-row justify-content-between mb-2">

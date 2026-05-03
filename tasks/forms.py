@@ -11,5 +11,5 @@ class CreateTaskForm(forms.ModelForm):
                                             'placeholder': 'Write a Title'}),
             'desc': forms.Textarea(attrs={'class': 'form-control',
                                           'placeholder': 'Write a Description'}), # NOQA
-            'important': forms.CheckboxInput(attrs={'class': 'form-check-input m-auto'}) # NOQA
+            'important': forms.CheckboxInput(attrs={'class': 'form-check-input mb-3'}) # NOQA
         }
